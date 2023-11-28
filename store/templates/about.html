@@ -1,0 +1,148 @@
+{% include "Navigation.html" %}
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 20%;
+  padding: 0 8px;
+  margin:auto;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  border: 2px solid black;
+  box-shadow: 10px 10px 5px grey;
+}
+img{
+aspect-ratio:1/1;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+  font-family:sans-serif;
+  background: -webkit-linear-gradient(to right, #155799, #159957);
+  background: linear-gradient(to right, #155799, #159957);
+  color:whitesmoke;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+</style>
+
+
+<div class="about-section">
+    <h1>About Us Page</h1>
+    <p>Some text about who we are and what we do.</p>
+    <p>
+"Empower Your Artistry, Sell Your Vision!"</p>
+</div>
+
+<h2 style="text-align:center"><b>Our Team</b></h2>
+<div class="row">
+    <div class="column">
+        <div class="card">
+            <div class="imagebox">
+                <img src="static/sushil.jpg" alt="Sushil Verma" style="width:100%" class="img-fluid img-thumbnail">
+            </div>
+            <div class="container">
+                <h2>Sushil Verma</h2>
+                <p class="title">Backend Designer</p>
+                <p>My passion lies in constructing the backbone of digital experiences, ensuring they run efficiently and securely. </p>
+                <p>sushil@gmail.com</p>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <div class="imagebox">
+                <img src="static/nishant.jpg" alt="Nishant Singh" style="width:100%" class="img-fluid img-thumbnail">
+            </div>
+            <div class="container">
+                <h2>Nishant Singh</h2>
+                <p class="title">Frontend Designer</p>
+                <p> I'm passionate about crafting visually captivating and user-centric digital experiences. </p>
+                <p>Nishant@gmail.com</p>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="static/mayank.jpg" alt="Mayank Jain" style="width:100%" class="img-fluid img-thumbnail">
+            <div class="container">
+                <h2>Mayank Jain</h2>
+                <p class="title">Database Manager</p>
+                <p>My focus revolves around ensuring data remains organized, accessible, and secure.</p>
+                <p>Mayank@gmail.com</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="card">
+            <img src="static/Akshat.png" alt="Akshat Sundriyal" style="width:100%" class="img-fluid img-thumbnail">
+            <div class="container">
+                <h2>Akshat Sundriyal</h2>
+                <p class="title">Tester</p>
+                <p>My passion lies in meticulously examining products to ensure they meet the highest standards of functionality and usability.</p>
+                <p>Akshat@gmail.com</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+{%include "footer.html"%}

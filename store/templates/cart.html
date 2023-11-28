@@ -1,0 +1,25 @@
+{% include "Navigation.html" %}
+<div class="row  m-5">
+{% for product in products %}
+    <div class="card mb-3 mx-4" style="width: 19rem;" id="card-shadow">
+  <img src="{{product.image.url}}" class="card-img-top" alt="..." style="height:20rem">
+  <div class="card-body">
+      <span>
+          <h5 class="card-title"><b>Title:</b>{{product.name}}</h5>
+      </span>
+      <span>
+          <p class="card-text overflow-y-auto" style="height:50px"><b>Description:</b>{{product.description}}</p>
+      </span>
+      <span>
+          <p class="card-text"><b>Date:</b>{{product.datetime}}</p>
+      </span>
+      <form action="" method="POST" class="mt-2">
+          {% csrf_token %}
+      <input hidden type="text" value='{{product.id}}' name="product_id">
+      <input type="submit" class="btn btn-primary" name="unsave" value="Remove">
+      </form>
+  </div>
+    </div>
+{% endfor %}
+</div>
+{%include "footer.html"%}

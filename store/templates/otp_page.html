@@ -1,0 +1,20 @@
+{% include "Navigation.html" %}
+<link rel="stylesheet" href="static/signup_signin.css">
+<form action="" method="post" id="form">
+        {% csrf_token %}
+        <!-- Headings for the form -->
+        <div class="headingsContainer">
+<!--            <h3>Sign in</h3>-->
+            <h3>OTP</h3>
+            <p>We have sent a confirmation email to {{email}}</p>
+            <img src="static/artistlogo.jpg" id="logo"/>
+        </div>
+        <!-- Main container for all inputs -->
+        <div class="mainContainer ml-5">
+            <label>OTP: </label>
+            <input type="tel" name="OTP" required class="w-75">
+            <!-- Submit button -->
+            <button type="submit">Verify</button>
+      </div>
+
+</form>

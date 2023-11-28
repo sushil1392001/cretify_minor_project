@@ -1,0 +1,89 @@
+{% include "Navigation.html" %}
+{% load extrafunction %}
+
+
+<!--slider image-->
+ <div class="container-fluid mt-3">
+
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner" >
+    <div class="carousel-item active">
+      <img src="https://images.hdqwalls.com/wallpapers/iceland-blue-sky-nature-pa.jpg"class="d-block w-100 object-fit-cover " style="height:450px" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.hdqwalls.com/wallpapers/winter-mountains-5k-ym.jpg" class="d-block w-100 object-fit-cover" style="height:450px" alt="...">
+    </div>
+    <div class="carousel-item ">
+      <img src="https://images.hdqwalls.com/wallpapers/beautiful-minimal-evening-5k-oe.jpg"  class="d-block w-100 object-fit-cover" style="height:450px" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+ </div>
+
+
+<!--product card-->
+
+<div class="row  m-4">
+    {% for product in products %}
+        <div class="card mb-3 bg-body-tertiary rounded mx-3" style="width: 21rem;" id="card-shadow">
+            <img src="{{product.image.url}}" class="card-img-top img-fluid img-thumbnail" alt="..." style="height:20rem">
+            <div class="card-body " >
+                <span>
+                    <p class="card-title"><b>Artist:</b>{{product|username:customer}}</p>
+                </span>
+                <span>
+                    <p class="card-title"><b>Title:</b>{{product.name}}</p>
+                </span>
+                <span>
+                    <p class="card-text overflow-y-auto" style="height:50px"><b>Description:</b>{{product.description}}</p>
+                </span>
+                <span>
+                    <p class="card-text"><b>Date:</b>{{product.datetime}}</p>
+                </span>
+                {% if email %}
+                <span class="d-flex justify-content-around mt-2">
+                    <form method="post" action="/#{{product.id}}">
+                        {% csrf_token %}
+                        <button class="btn btn-primary mx-1" name="like" value="{{product.id}}" title="Like">
+                           {%if product|change_like_icon:get_like_product%}
+                            <i class="bi bi-heart-fill"></i>
+                            {%else%}
+                            <i class="bi bi-heart" ></i>
+                            {%endif%}
+                            {{product|count_likes}}
+                        </button>
+                        <button class="btn btn-primary mx-1" name="bookmark" value="{{product.id}}" title="Bookmark" id="{{product.id}}">
+                            {%if product|change_bookmark_icon:get_bookmark_product%}
+                            <i class="bi bi-bookmark-check-fill"></i>
+                            {%else%}
+                            <i class="bi bi-bookmark" ></i>
+                            {%endif%}
+                        </button>
+                    </form>
+                      <form action="/#{{product.id}}" method="POST">
+                            {% csrf_token %}
+                            <input hidden type="text" value='{{product.id}}' name="productid">
+                            <button class="btn btn-primary mx-1" title="Buy"><i class="bi bi-cart"></i></button>
+                        </form>
+                    <form method='get' action="/" >
+<!--                        <button class="btn btn-primary mx-1" title="Buy"><i class="bi bi-cart"></i></button>-->
+                        <button class="btn btn-primary mx-1" name='search' value="{{product|username:customer}}" title="All Post"><i class="bi bi-file-image"></i></button>
+                        <a class="btn btn-primary mx-1" title="Chat" href="chat"><i class="bi bi-chat"></i></a>
+                    </form>
+                </span>
+                {%endif%}
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{%include "footer.html"%}
